@@ -1,0 +1,17 @@
+.vehicle-div{
+    display: flex;
+    background-color: white;
+    margin: 10px 0;
+    border-radius: 5px;
+    padding: 10px;
+}
+.vehicle-div img{
+    width: 30px;
+    height: 30px;
+}
+.vehicle-logo, .vehicle-name{
+    margin-right: 25px;
+}
+.rent {
+    margin-left: 25px;
+}

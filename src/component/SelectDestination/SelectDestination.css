@@ -1,0 +1,54 @@
+.map{
+    width: 500px;
+}
+.destination-card{
+    background-color: whitesmoke;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    width: 250px;
+    margin-bottom: 50px;
+}
+.ship-form .submit-btn{
+    background-color: rgb(241, 132, 89);
+    color: white;
+}
+.ship-form {
+    margin: 5px 10px;
+}
+.ship-form  input{
+    display: block;
+    margin: 10px 0;
+    padding: 5px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 200px;
+}
+.error{
+    color: red;
+}
+.destination-div{
+    background-color: tomato;
+    color: white;
+    width: 290px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.destination-container{
+    background-color: lightgray;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+
+}
+.vehicle-info{
+    width: 300px;
+    padding: 10px;
+    border-radius: 10px;
+    margin:10px 0 ;
+}
+.map-style{
+    height: 400px;
+    width: 700px;
+    border: 0;
+}
