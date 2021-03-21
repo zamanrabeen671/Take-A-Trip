@@ -3,7 +3,7 @@ const fakeData = [{
     "price": "45",
     "img" : "https://i.ibb.co/10DDpkv/Frame.png",
     "name": "BIKE",
-    "sit" : 4
+    "sit" : 2
   }, {
     "id": 2,
     "price": "60",
@@ -15,13 +15,13 @@ const fakeData = [{
     "price": "70",
     "img": "https://i.ibb.co/Hnmwdkw/Frame-1.png",
     "name": "BUS",
-    "sit" : 4
+    "sit" : 20
   }, {
     "id": 4,
     "price": "83",
     "img": "https://i.ibb.co/W6L3sj4/Group.png",
     "name": "TRAIN",
-    "sit" : 4
+    "sit" : 50
   }];
 
 export default fakeData;

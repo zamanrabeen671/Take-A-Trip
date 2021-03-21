@@ -9,7 +9,7 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import { UserContext } from '../../App';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faFacebook,faGoogle,faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook, faGoogle, faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 import google from '../../images/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png';
 import facebook from '../../images/Facebook.png'
@@ -28,6 +28,7 @@ const Login = () => {
         name: '',
         email: '',
         password: '',
+        ConfirmPassword: '',
         photo: '',
         error: '',
         success: false,
@@ -51,7 +52,7 @@ const Login = () => {
                 setLoggedInUser(signedInUser);
                 history.replace(from);
             }).catch((error) => {
-                const {code, message, credential, email} = error;
+                const { code, message, credential, email } = error;
                 console.log(code, message, email)
             });
     }
@@ -67,6 +68,7 @@ const Login = () => {
                     isSignedIn: true,
                     name: displayName,
                     photo: photoURL,
+                    ConfirmPassword: '',
                     email: email
                 }
                 setUser(signedInUser);
@@ -85,36 +87,27 @@ const Login = () => {
     const handleOnBlur = (e) => {
         let isFormValid = true;
         let isPassValid = true;
-        let password = '';
-        console.log(e.target.name, e.target.value);
+
         if (e.target.name === 'email') {
             isFormValid = /\S+@\S+\.\S+/.test(e.target.value);
         }
         if (e.target.name === 'password') {
-            password = e.target.value;
-            const isPassValid = e.target.value.length > 6;
+            const isPassLen = e.target.value.length > 6;
             const passHasNum = /\d{1}/.test(e.target.value)
-            isFormValid = isPassValid && passHasNum;
+            isFormValid = isPassLen && passHasNum;
+            const newUser = { ...user };
+            newUser[e.target.name] = e.target.value;
+            setUser(newUser);
         }
-        if(e.target.name === 'ConfirmPassword') {
-            const confirmPassword = e.target.value;
-            if(confirmPassword !== password) {
-                const newUser = {...user};
-                newUser.error = 'password not match';
-                isFormValid = false;
-                setUser(newUser);
-                setLoggedInUser(newUser);
-            }
-            else{
-                const newUser = {...user};
-                newUser.success = true;
-                newUser.error = ''
-                isFormValid = true;
-                setUser(newUser);
-                setLoggedInUser(newUser);
+        if (e.target.name === 'ConfirmPassword') {
+            const isPassLen = e.target.value.length > 6;
+            const passHasNum = /\d{1}/.test(e.target.value)
+            isFormValid = isPassLen && passHasNum;
+            const newUser = { ...user };
+            newUser[e.target.name] = e.target.value;
+            setUser(newUser);
+        }
 
-            }
-        }
         if (isFormValid) {
             const newUser = { ...user };
             newUser[e.target.name] = e.target.value;
@@ -156,8 +149,7 @@ const Login = () => {
                     setUser(newUser);
                     setLoggedInUser(newUser);
                     history.replace(from);
-                    console.log('sign in user info ', res.user)
-                   
+
                 })
                 .catch((error) => {
                     const newUser = { ...user };
@@ -213,8 +205,8 @@ const Login = () => {
             </div>
             <div>
                 <p className="or-icon">--------------- or -------------------</p>
-                <button onClick={handleFbSIgnIn} className="social-btn"> <img src={facebook} alt="" className="icon-img"/> continue with Facebook</button> <br />
-                <button onClick={handleGoogleSignIn} className="social-btn"><img src={google} alt="" className="icon-img"/>continue with Google</button>
+                <button onClick={handleFbSIgnIn} className="social-btn"> <img src={facebook} alt="" className="icon-img" /> continue with Facebook</button> <br />
+                <button onClick={handleGoogleSignIn} className="social-btn"><img src={google} alt="" className="icon-img" />continue with Google</button>
             </div>
 
             <p style={{ color: 'red' }}>{user.error}</p>

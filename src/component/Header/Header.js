@@ -8,7 +8,7 @@ const Header = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     return (
         <div className="header container mb-5">
-            <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+            <Navbar collapseOnSelect expand="lg" bg="" variant="light">
                 <Navbar.Brand href="/home" className="brand">TAKE A TRIP</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav ">
